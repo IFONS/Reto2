@@ -23,6 +23,8 @@ function registro()
 {
     //comprobar correo()
     comprobarContraseña();
+    comprobarDNI();
+    comprobarCP();
     comprobarTelefonoF();
     comprobarTelefonoM();
 }
@@ -104,6 +106,57 @@ function comprobarCorreoL()
                 }
             });
         });
+}
+
+function comprobarDNI()
+{
+    var dni = $('[name=dni]');
+    function coincideDni()
+    {
+        var dni1 =dni.val();
+        var reg = /^[0-9]{9}[a-zA-Z]{1}$/;
+
+        if( !dni1.match(reg) )
+        {
+            $('#feedDni').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> Dni no valido.</div>');
+        }
+        else
+        {
+            $('#feedDni').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Dni correcto.</div>');
+        }
+
+    }
+
+    dni.keyup(function () {
+            coincideDni();
+        }
+
+    )
+}
+
+function comprobarCP()
+{
+    var zip = $('[name=zipo]');
+    function coincideZipo()
+    {
+        var cp =zip.val();
+        var reg = /^[0-9]{5}$/;
+
+        if( !cp.match(reg) )
+        {
+            $('#feedZipo').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> CP no valido.</div>');
+        }
+        else
+        {
+            $('#feedZipo').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> CP correcto.</div>');
+        }
+
+    }
+    zip.keyup(function () {
+            coincideZipo();
+        }
+
+    )
 }
 
 function comprobarTelefonoM()
