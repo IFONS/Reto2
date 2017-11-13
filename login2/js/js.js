@@ -4,7 +4,7 @@ function inicio()
     /**
     * funcion para que solo se vea el login al principio
     */
-    mostrarLogin();
+    mostrarSingUp()
     /**
     * Carga lo necesario en la cabecera
     */
@@ -22,7 +22,12 @@ function inicio()
 function registro()
 {
     //comprobar correo()
+    
+    coorreo();
     comprobarContraseña();
+    comprobarNombre();
+    comprobarApel1();
+    comprobarApel2();
     comprobarDNI();
     comprobarCP();
     comprobarTelefonoF();
@@ -87,7 +92,32 @@ $("#thub2").hide();
 
 function comprobarCorreoL()
 {
-    $('#emailoLog').on('focusout',
+     $('#emailoReg').on('submit', function (e) 
+                            {
+                                e.preventDefault(); //parar el submit para que no se envíe el formulario recargando la página.
+                                var datos = $(this).serialize();
+                                //Envía el formulario vía AJAX. Recoge el resultado en la callback.
+                                alert(datos);
+                                $.ajax(
+                                {
+                                        type: 'POST',
+                                        url: 'index.php',
+                                        data: datos,
+                                        
+                                        success: function (data) 
+                                        {
+                                            alert(datos);
+                                          console.log('Llamada OK --> '+data);
+                                          alert('Llamada OK --> '+data);
+                                        }
+                                });
+                            });
+
+			
+
+    
+    
+    /**$('#emailoLog').on('focusout',
         function (e)
         {
             e.preventDefault(); //parar el submit para que no se envíe el formulario recargando la página.
@@ -105,9 +135,53 @@ function comprobarCorreoL()
                     alert('Llamada OK --> '+email);
                 }
             });
-        });
+        });*/
+    
+    
+
+
 }
 
+function coorreo()
+{
+    var correo = $('[name=emailoReg]');
+    function coincideEmilio()
+    {
+        //e.preventDefault();
+        var emailo =correo.val();
+        var reg = /^[a-zA-Z]+$/;
+
+        if( !emailo.match(reg) )
+        {
+            $('#feedEmilio').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> Dni no valido.</div>');
+
+        }
+        else
+        {
+            $.ajax
+            ({
+                type: 'POST',
+                url: 'index.html',
+                data: emailo,
+                success: function (data)
+                {
+                    alert(emailo);
+                    console.log('Llamada OK --> '+email);
+                    alert('Llamada OK --> '+email);
+                }
+            });
+            $('#feedEmilio').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Dni correcto.</div>');
+        }
+
+    }
+
+    correo.blur(function () {
+
+        coincideEmilio();
+        }
+
+    )
+}
 function comprobarDNI()
 {
     var dni = $('[name=dni]');
@@ -159,27 +233,83 @@ function comprobarCP()
     )
 }
 
-function comprobarTelefonoM()
-{
-    var tel2 = $('[name=tel2]');
-    function coincideTelf()
-    {
-        var movil=tel2.val();
-        var reg = /^[0-9]{9}$/;
 
-        if( !movil.match(reg) )
+
+function comprobarNombre()
+{
+    var nombre = $('[name=nombre]');
+    function coincideNombre()
+    {
+        var valor=nombre.val();
+        var reg = /^[a-zA-Z]+$/;
+
+        if( !valor.match(reg) )
         {
-            $('#feedMov').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> Movil no valido.</div>');
+            $('#feedNombre').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong>Nombre no valido.</div>');
         }
         else
         {
-            $('#feedMov').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Movil correcto.</div>');
+            $('#feedNombre').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Nombre correcto.</div>');
         }
 
     }
 
-    tel2.keyup(function () {
-            coincideTelf();
+    nombre.keyup(function () {
+            coincideNombre();
+        }
+
+    )
+}
+
+function comprobarApel1()
+{
+    var ape1 = $('[name=ape1]');
+    var ape2 = $('[name=ape2]');
+    function coincideApel1()
+    {
+        var apel1=ape1.val();
+        var apel2=ape2.val();
+        var reg = /^[a-zA-Z]+$/;
+
+        if( !apel1.match(reg) )
+        {
+            $('#feedApe1').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong>Nombre no valido.</div>');
+        }
+        else
+        {
+            $('#feedApe1').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Nombre correcto.</div>');
+        }
+
+    }
+
+    ape1.keyup(function () {
+            coincideApel1();
+        }
+
+    )
+}
+
+function comprobarApel2()
+{
+    var ape2 = $('[name=ape2]');
+    function coincideApel2()
+    {
+        var apel2=ape2.val();
+        var reg = /^[a-zA-Z]+$/;
+
+        if( !apel2.match(reg) )
+        {
+            $('#feedApe2').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong>Nombre no valido.</div>');
+        }
+        else
+        {
+            $('#feedApe2').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Nombre correcto.</div>');
+        }
+
+    }
+
+    ape2.keyup(function () {
+            coincideApel2();
         }
 
     )
@@ -188,11 +318,11 @@ function comprobarTelefonoM()
 function comprobarTelefonoF()
 {
     var tel1 = $('[name=tel1]');
-    var tel2 = $('[name=tel2]');
+
     function coincideTelf()
     {
         var fijo=tel1.val();
-        var movil=tel2.val();
+
         var reg = /^[0-9]{9}$/;
 
         if( !fijo.match(reg)  )
@@ -210,8 +340,32 @@ function comprobarTelefonoF()
         }
 
     )
+
+}
+
+function comprobarTelefonoM()
+{
+
+    var tel2 = $('[name=tel2]');
+    function coincideMov()
+    {
+
+        var movil=tel2.val();
+        var reg = /^[0-9]{9}$/;
+
+        if( !movil.match(reg)  )
+        {
+            $('#feedMov').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> Movil no valido.</div>');
+        }
+        else
+        {
+            $('#feedMov').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Movil correcto.</div>');
+        }
+
+    }
+
     tel2.keyup(function () {
-            coincideTelf();
+            coincideMov();
         }
 
     )
@@ -219,42 +373,42 @@ function comprobarTelefonoF()
 
 function comprobarContraseña()
 {
-               var pass1 = $('[name=passwordReg]');
-               var pass2 = $('[name=passwordReg2]');
-               //oculto por defecto el elemento span
-               //función que comprueba las dos contraseñas
-               function coincidePassword()
-               {
-                   var valor1 = pass1.val();
-                   var valor2 = pass2.val();
-                   //muestro el span
+    var pass1 = $('[name=passwordReg]');
+    var pass2 = $('[name=passwordReg2]');
+    //oculto por defecto el elemento span
+    //función que comprueba las dos contraseñas
+    function coincidePassword()
+    {
+       var valor1 = pass1.val();
+       var valor2 = pass2.val();
+       //muestro el span
 
-                   if(valor1 != valor2 )
-                   {
-                       $('#feedContras').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> Las contraseñas no coinciden.</div>');
-                   }
-                   else if(valor1.length<6 || valor1.length>10)
-                   {
-                       $('#feedContras').html('<div class="alert alert-danger" role="alert"><strong>Warning!</strong> Longitud incorrecta, minimo 6, maximo 10.</div>');
-                   }
-                   else
-                   {
-                       if(valor1.length!=0 && valor1==valor2)
-                       {
+       if(valor1 != valor2 )
+       {
+           $('#feedContras').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> Las contraseñas no coinciden.</div>');
+       }
+       else if(valor1.length<6 || valor1.length>10)
+       {
+           $('#feedContras').html('<div class="alert alert-danger" role="alert"><strong>Warning!</strong> Longitud incorrecta, minimo 6, maximo 10.</div>');
+       }
+       else
+       {
+           if(valor1.length!=0 && valor1==valor2)
+           {
 
-                           $('#feedContras').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Las contraseñas coinciden.</div>');
-                       }
-                   }
-               }
-               //ejecuto la función al soltar la tecla
-                pass1.keyup(function()
-                {
-                    coincidePassword();
-                });
-                pass2.keyup(function()
-                {
-                    coincidePassword();
-                });
+               $('#feedContras').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Las contraseñas coinciden.</div>');
+           }
+       }
+    }
+    //ejecuto la función al soltar la tecla
+    pass1.keyup(function()
+    {
+        coincidePassword();
+    });
+    pass2.keyup(function()
+    {
+        coincidePassword();
+    });
 
 
 

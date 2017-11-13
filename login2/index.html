@@ -43,14 +43,14 @@
                         <div class="caption">
                             <form id="register" method="post" action="index.html">
                                 <h2>Register</h2>
-                                <div class="form-row col-sm-6 col-md-6">
+                                <div class="form-row col-sm-6 col-md-12 col-lg-12">
                                     <div class="form-group col-md-5 ">
                                         <label  for="emailoReg">Email</label>
                                         <div class="input-group mb-2 mb-sm-0">
                                             <div class="input-group-addon">@</div>
                                             <input type="text" class="form-control"  id="emailoReg" name="emailoReg" placeholder="Username" required>
                                         </div>
-                                        ikasle.egibide.org
+
                                         <?php
                                         /**
                                         *Recogida variable llamada bd
@@ -63,6 +63,9 @@
 
                                         die($output); //Enviamos la respuesta y finalizamos el script.
                                         ?>
+                                        <div class="invalid-feedback" id="feedEmilio">
+                                            ikasle.egibide.org
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="passwordReg">Contraseña</label>
@@ -86,28 +89,71 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row col-sm-6 col-md-6">
-                                    <div class="form-group col-md-2">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control is-valid" id="nombre" required>
+                                <div class="form-row col-sm-6 col-md-12 col-lg-12">
+                                    <div class="form-row col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group col-md-2 col-lg-3">
+                                            <label for="nombre">Nombre</label>
+                                            <input type="text" class="form-control is-valid" id="nombre" name="nombre" required>
+                                            <div class="invalid-feedback" id="feedNombre">
+                                                ewwwwwwwwwwwwwww
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2 col-lg-3">
+                                            <label for="ape1">Apellido 1</label>
+                                            <input type="text" class="form-control is-valid" id="ape1" name="ape1" required>
+                                            <div class="invalid-feedback" id="feedApe1">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2 col-lg-3">
+                                            <label for="ape2">Apellido 2</label>
+                                            <input type="text" class="form-control is-valid" id="ape2" name="ape2">
+                                            <div class="invalid-feedback" id="feedApe2">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2 col-lg-3">
+                                            <label for="zipo">Zip</label>
+                                            <input type="text" class="form-control is-valid" id="zipo" name="zipo" placeholder="01000" required>
+                                            <div class="invalid-feedback"  id="feedZipo">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group col-md-6">
+                                            <label for="direccion">Direccion</label>
+                                            <input type="text" class="form-control is-valid" id="direccion" placeholder="1234 Main St" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="ciudad">Ciudad</label>
+                                            <input type="text" class="form-control is-valid" id="ciudad" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row col-sm-6 col-md-12 col-lg-12">
+                                    <div class="form-group col-md-2 col-lg-2">
+                                        <label for="tel1">Fijo</label>
+                                        <input type="tel" class="form-control is-valid" id="tel1" name="tel1" pattern="[0-9]{9}" required>
+                                        <div class="invalid-feedback"  id="feedTel">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2 col-lg-2" >
+                                        <label for="tel2">Movil</label>
+                                        <input type="tel" class="form-control is-valid" id="tel2" name="tel2" pattern="[0-9]{9}">
+                                        <div class="invalid-feedback"  id="feedMov">
+                                            Please provide a valid state.
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2 col-lg-2" >
+                                        <label for="dni">Dni</label>
+                                        <input type="text" class="form-control is-valid" id="dni" name="dni" pattern="[a-zA-Z0-9]{5,10}$" required>
+                                        <div class="invalid-feedback"  id="feedDni">
+                                            Please provide a valid state.
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="apellido1">Apellido 1</label>
-                                        <input type="text" class="form-control is-valid" id="apellido1" required>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="apellido2">Apellido 2</label>
-                                        <input type="text" class="form-control is-valid" id="apellido2">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="direccion">Direccion</label>
-                                        <input type="text" class="form-control is-valid" id="direccion" placeholder="1234 Main St" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="ciudad">Ciudad</label>
-                                        <input type="text" class="form-control is-valid" id="ciudad" required>
-                                    </div>
-                                    <div class="form-group col-md-4">
                                         <label for="provincia">Provincia</label>
                                         <select id="provincia" class="form-control" required>
                                             <option selected>Selecciona...</option>
@@ -165,47 +211,15 @@
                                             <option value='zaragoza'>Zaragoza</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="zipo">Zip</label>
-                                        <input type="text" class="form-control is-valid" id="zipo" name="zipo" placeholder="01000" required>
-                                        <div class="invalid-feedback"  id="feedZipo">
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="tel1">Fijo</label>
-                                        <input type="tel" class="form-control is-valid" id="tel1" name="tel1" pattern="[0-9]{9}" required>
-                                        <div class="invalid-feedback"  id="feedTel">
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-2" >
-                                        <label for="tel2">Movil</label>
-                                        <input type="tel" class="form-control is-valid" id="tel2" name="tel2" pattern="[0-9]{9}">
-                                        <div class="invalid-feedback"  id="feedMov">
-                                            Please provide a valid state.
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-2" >
-                                        <label for="dni">Dni</label>
-                                        <input type="text" class="form-control is-valid" id="dni" name="dni" pattern="[a-zA-Z0-9]{5,10}$" required>
-                                        <div class="invalid-feedback"  id="feedDni">
-                                            Please provide a valid state.
-                                        </div>
-                                    </div>
                                 </div>
-
-                                    <button type="submit" class="btn btn-primary">sign up</button>
-                                    <button type="button" class="btn btn-default" id="log">Log In</button>
-
-
-
+                                <button type="submit" class="btn btn-primary">sign up</button>
+                                <button type="button" class="btn btn-default" id="log">Log In</button>
                             </form>
                         </div>
                     </div>
 
                     <!-- Contenedor para el login -->
-                    <div class="thumbnail col-sm-6 col-md-6" id="thub2">
+                    <div class="thumbnail col-sm-6 col-md-6 col-lg-6" id="thub2">
                         <div class="caption">
                             <form id="login" method="post" action="index.html">
                                 <h2>Login</h2>
