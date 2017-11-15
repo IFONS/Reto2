@@ -2,7 +2,7 @@
     function conexionBd(){
         try{
             $conexion=null;
-            $bbdd="mysql:host=localhost;dbname=noneanuncios;charset=utf8";
+            $bbdd="mysql:host=localhost;dbname=algo;charset=utf8";
             $usuario="root";
             $contraseña="";
             $conexion = new PDO($bbdd,$usuario,$contraseña);

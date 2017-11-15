@@ -5,14 +5,22 @@ include_once 'conexionBd.php';
 if(isset($_POST['emailoReg']) &&  !empty($_POST['emailoReg']))
 {
     $correo=$_POST['emailoReg'];
-    $correo=$correo+"@ikasle.egibide.org";
+    $correo=$correo."@ikasle.egibide.org";
     echo $correo;
     if(comprobarEmail($correo))
     {
-        nuevoUsuario();
+        
     }
 }
-
+if(isset($_POST['alias']) &&  !empty($_POST['alias']))
+{
+    $alias=$_POST['alias'];
+    echo $alias;
+    if(comprobarAlias($alias))
+    {
+        
+    }
+}
 
 //FUNCIÓN PARA COMPROBAR LOGIN CORRECTO Y ACCEDER
 function comprobarUsuario($user,$pass){
@@ -37,25 +45,20 @@ function comprobarUsuario($user,$pass){
 }
 
 //FUNCIÓN PARA COMPROBAR EMAIL (QUE EL USUARIO NO ESTA YA REGISTRADO)
-function comprobarEmail($email) {   
-    echo $email;
+function comprobarEmail($correo) {   
+    echo $correo;
     $conexion = conexionBd();    
-    
-    
-    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //DATOS A PASAR: este dato hay que pasarlo como argumento o sesion
     
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
-    
-    
-        
+     
     $consulta = $conexion->prepare('
             SELECT email
             FROM usuario
             WHERE email = :email');    
     $consulta->execute(array(
-        'email' => $email
+        'email' => $correo
     ));
     
     if($buscaEmail = $consulta->fetchColumn() != false) {
@@ -64,6 +67,34 @@ function comprobarEmail($email) {
     }
     else {        
         echo 'NO SE HA ENCONTRADO ESTE EMAIL EN LA BD<br>
+        (AQUI HABRIA QUE MANDAR A LA VISTA DEL LOGIN DE NUEVO (DND ESTABA)).';
+        return true;
+    }        
+    $conexion = null;
+}
+
+function comprobarAlias($alias) {   
+    echo $alias;
+    $conexion = conexionBd();    
+ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //DATOS A PASAR: este dato hay que pasarlo como argumento o sesion
+    
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+     
+    $consulta = $conexion->prepare('
+            SELECT alias
+            FROM usuario
+            WHERE alias = :alias');    
+    $consulta->execute(array(
+        'alias' => $alias
+    ));
+    
+    if($buscaAlias = $consulta->fetchColumn() != false) {
+        echo 'Ya existe un usuario registrado con este Alias.';
+        return false;
+    }
+    else {        
+        echo 'NO SE HA ENCONTRADO ESTE Alias EN LA BD<br>
         (AQUI HABRIA QUE MANDAR A LA VISTA DEL LOGIN DE NUEVO (DND ESTABA)).';
         return true;
     }        

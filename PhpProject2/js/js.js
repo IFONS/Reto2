@@ -4,6 +4,7 @@ function inicio()
     /**
     * funcion para que solo se vea el login al principio
     */
+   
     mostrarSingUp();
     /**
     * Carga lo necesario en la cabecera
@@ -16,7 +17,7 @@ function inicio()
     /**
     *todo lo que tenga que hacer en login
     */
-    login();
+    
 
 }
 function registro()
@@ -24,6 +25,7 @@ function registro()
     //comprobar correo()
     
     coorreo();
+    comprobarApolo();
     comprobarContraseña();
     comprobarNombre();
     comprobarApel1();
@@ -34,10 +36,7 @@ function registro()
     comprobarTelefonoM();
 }
 
-function login()
-{
-    comprobarCorreoL();
-}
+
 
 function cabecera()
 {
@@ -70,7 +69,6 @@ function cabecera()
         mostrarSingUp
     );
     registro();
-    login();
 }
 
 function mostrarLogin()
@@ -167,12 +165,12 @@ function coorreo()
                 data: datos,
                 success: function (data)
                 {
-                    
+                    $('#feedEmilio').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Correo correcto.</div>');
                     console.log('Llamada OK --> '+data);
                     alert('Llamaa OK --> '+data);
                 }
             });
-            $('#feedEmilio').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Correo correcto.</div>');
+            
         }
             
 
@@ -184,6 +182,41 @@ function coorreo()
         }
 
     )
+}
+function comprobarApolo()
+{
+    var apodo = $('[name=alias]');
+    function coincideAple()
+    {
+        var apolo =apodo.val();
+        var reg = /[a-zA-Z]+$/;
+        var datos=apodo.serialize();
+
+        if( !apolo.match(reg) )
+        {
+            $('#feedAlias').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> TU apolo no silve.</div>');
+        }
+        else
+        {
+            $.ajax
+            ({
+                type: 'POST',
+                url: './opsbd/usuarioBD.php',
+                data: datos,
+                success: function (data)
+                {
+                    console.log('Llamada OK --> '+data);
+                    alert('Llamaa OK --> '+data);
+                }
+            });
+            $('#feedAlias').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Apolo colecto.</div>');
+        }
+
+    }
+
+    apodo.blur(function () {
+            coincideAple();
+        })
 }
 function comprobarDNI()
 {
@@ -211,6 +244,10 @@ function comprobarDNI()
     )
 }
 
+function todos()
+{
+    
+}
 function comprobarCP()
 {
     var zip = $('[name=zipo]');
@@ -298,7 +335,7 @@ function comprobarApel2()
         var apel2=ape2.val();
         var reg = /^[a-zA-Z]+$/;
 
-        if( !apel2.match(reg) )
+        if( !apel2.match(reg))
         {
             $('#feedApe2').html('<div class="alert alert-danger" role="alert" > <strong>Warning!</strong>Nombre no valido.</div>');
         }

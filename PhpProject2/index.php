@@ -43,7 +43,7 @@
                         <div class="caption">
                             <form id="register" method="post" action="opsbd/usuarioBd.php">
                                 <h2>Register</h2>
-                                <div class="form-row col-sm-6 col-md-12 col-lg-12">
+                                <div class="form-row col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-md-5 ">
                                         <label  for="emailoReg">Email</label>
                                         <div class="input-group mb-2 mb-sm-0">
@@ -63,6 +63,9 @@
                                             Please provide a valid state.
                                         </div>
                                     </div>
+                                    
+                                </div>
+                                 <div class="form-row col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-md-5">
                                         <label for="passwordReg2">Repite Contraseña</label>
                                         <input type="password" class="form-control is-valid" id="passwordReg2" name="passwordReg2" placeholder="Password" required>
@@ -72,36 +75,36 @@
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="alias">Alias</label>
-                                        <input type="text" class="form-control is-valid" id="alias" required>
+                                        <input type="text" class="form-control is-valid" id="alias" name="alias" required>
                                         <div class="invalid-feedback"  id="feedAlias">
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row col-sm-6 col-md-12 col-lg-12">
+                                 </div>
+                                <div class="form-row col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-row col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group col-md-2 col-lg-3">
+                                        <div class="form-group col-md-3 col-lg-3">
                                             <label for="nombre">Nombre</label>
                                             <input type="text" class="form-control is-valid" id="nombre" name="nombre" pattern="^[a-zA-Z]+$" required>
                                             <div class="invalid-feedback" id="feedNombre">
                                                 ewwwwwwwwwwwwwww
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-2 col-lg-3">
+                                        <div class="form-group col-md-3 col-lg-3">
                                             <label for="ape1">Apellido 1</label>
                                             <input type="text" class="form-control is-valid" id="ape1" name="ape1" pattern="^[a-zA-Z]+$" required>
                                             <div class="invalid-feedback" id="feedApe1">
 
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-2 col-lg-3">
+                                        <div class="form-group col-md-3 col-lg-3">
                                             <label for="ape2">Apellido 2</label>
                                             <input type="text" class="form-control is-valid" id="ape2" name="ape2 " pattern="^[a-zA-Z]+$">
                                             <div class="invalid-feedback" id="feedApe2">
 
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-2 col-lg-3">
+                                        <div class="form-group col-md-3 col-lg-3">
                                             <label for="zipo">Zip</label>
                                             <input type="text" class="form-control is-valid" id="zipo" name="zipo" placeholder="01000" pattern="^[0-9]{5}$" required>
                                             <div class="invalid-feedback"  id="feedZipo">
@@ -120,7 +123,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row col-sm-6 col-md-12 col-lg-12">
+                                <div class="form-row col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-md-2 col-lg-2">
                                         <label for="tel1">Fijo</label>
                                         <input type="tel" class="form-control is-valid" id="tel1" name="tel1" pattern="[0-9]{9}" required>
@@ -208,46 +211,7 @@
                     </div>
                     
 
-                    <!-- Contenedor para el login -->
-                    <div class="thumbnail col-sm-6 col-md-6 col-lg-6" id="thub2">
-                        <div class="caption">
-                            <form id="login" method="post" action="index.php">
-                                <h2>Login</h2>
-                                <div class="form-group">
-                                    <label for="emailoLog">Email address</label>
-                                    <input type="email" class="form-control" id="emailoLog" aria-describedby="emailHelp" placeholder="Enter email">
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                    <?php
-                                        /**
-                                        *Recogida variable llamada bd
-                                        
-                                        if(isset($_POST['emailLog']))
-                                        {
-                                        
-
-                                        }
-                                        */
-                                        ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="passwordLog">Password</label>
-                                    <input type="password" class="form-control" id="passwordLog" placeholder="Password">
-                                </div>
-                                <!--
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input">
-                                        Check me out
-                                    </label>
-                                </div>
-                                para recordar usuario
-                                -->
-                                <button type="submit" class="btn btn-primary">Log In</button>
-                                <button type="button" class="btn btn-default" id="sig">sign up</button>
-                            </form>
-
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
