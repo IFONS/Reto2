@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>PEPE</title>
 </head>
 <body>
@@ -41,7 +41,7 @@
                 <!-- contenedor para el registro -->
                     <div class="thumbnail" id="thub1">
                         <div class="caption">
-                            <form id="register" method="post" action="opsbd/usuarioBd.php">
+                            <form id="register" method="post" action="./opsbd/usuarioBD.php">
                                 <h2>Register</h2>
                                 <div class="form-row col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-md-5 ">
@@ -52,7 +52,7 @@
                                         </div>
 
                                         
-                                        <div class="invalid-feedback" id="feedEmilio">
+                                        <div class="invalid-feedback"  id="feedEmilio">
                                             ikasle.egibide.org
                                         </div>
                                     </div>
@@ -83,71 +83,64 @@
                                  </div>
                                 <div class="form-row col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-row col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group col-md-3 col-lg-3">
+                                        <div class="form-group col-md-4 col-lg-4">
                                             <label for="nombre">Nombre</label>
-                                            <input type="text" class="form-control is-valid" id="nombre" name="nombre" pattern="^[a-zA-Z]+$" required>
-                                            <div class="invalid-feedback" id="feedNombre">
+                                            <input type="text" class="form-control is-valid" class="textu" id="nombre" name="nombre" pattern="^[a-zA-Z]+$" required>
+                                            <div class="invalid-feedback" class="feedtext" id="feedNombre">
                                                 ewwwwwwwwwwwwwww
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-3 col-lg-3">
+                                        <div class="form-group col-md-4 col-lg-4">
                                             <label for="ape1">Apellido 1</label>
-                                            <input type="text" class="form-control is-valid" id="ape1" name="ape1" pattern="^[a-zA-Z]+$" required>
-                                            <div class="invalid-feedback" id="feedApe1">
+                                            <input type="text" class="form-control is-valid" class="textu" id="ape1" name="ape1" pattern="^[a-zA-Z]+$" required>
+                                            <div class="invalid-feedback" class="feedtext" id="feedApe1">
 
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-3 col-lg-3">
+                                        <div class="form-group col-md-4 col-lg-4">
                                             <label for="ape2">Apellido 2</label>
-                                            <input type="text" class="form-control is-valid" id="ape2" name="ape2 " pattern="^[a-zA-Z]+$">
-                                            <div class="invalid-feedback" id="feedApe2">
+                                            <input type="text" class="form-control is-valid" class="textu" id="ape2" name="ape2 " pattern="^[a-zA-Z]+$">
+                                            <div class="invalid-feedback" class="feedtext" id="feedApe2">
 
                                             </div>
-                                        </div>
-                                        <div class="form-group col-md-3 col-lg-3">
-                                            <label for="zipo">Zip</label>
-                                            <input type="text" class="form-control is-valid" id="zipo" name="zipo" placeholder="01000" pattern="^[0-9]{5}$" required>
-                                            <div class="invalid-feedback"  id="feedZipo">
-
-                                            </div>
-                                        </div>
+                                        </div>       
                                     </div>
                                     <div class="form-row col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group col-md-6">
                                             <label for="direccion">Direccion</label>
-                                            <input type="text" class="form-control is-valid" id="direccion" placeholder="1234 Main St" required>
+                                            <input type="text" class="form-control is-valid" class="textu" id="direccion" name="direccion" placeholder="1234 Main St" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="ciudad">Ciudad</label>
-                                            <input type="text" class="form-control is-valid" id="ciudad" required>
+                                            <input type="text" class="form-control is-valid" class="textu" id="ciudad" name="ciudad" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-md-2 col-lg-2">
                                         <label for="tel1">Fijo</label>
-                                        <input type="tel" class="form-control is-valid" id="tel1" name="tel1" pattern="[0-9]{9}" required>
+                                        <input type="tel" class="form-control is-valid" id="tel1" class="telf" name="tel1" pattern="[0-9]{9}" required>
                                         <div class="invalid-feedback"  id="feedTel">
 
                                         </div>
                                     </div>
                                     <div class="form-group col-md-2 col-lg-2" >
                                         <label for="tel2">Movil</label>
-                                        <input type="tel" class="form-control is-valid" id="tel2" name="tel2" pattern="[0-9]{9}">
+                                        <input type="tel" class="form-control is-valid" class="telf" id="tel2" name="tel2" pattern="[0-9]{9}">
                                         <div class="invalid-feedback"  id="feedMov">
                                             Please provide a valid state.
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-2 col-lg-2" >
-                                        <label for="dni">Dni</label>
-                                        <input type="text" class="form-control is-valid" id="dni" name="dni" pattern="^[0-9]{9}[a-zA-Z]{1}$" required>
-                                        <div class="invalid-feedback"  id="feedDni">
+                                    <div class="form-group col-md-2 col-lg-2">
+                                            <label for="zipo">Zip</label>
+                                            <input type="text" class="form-control is-valid" id="zipo" name="zipo" placeholder="01000" pattern="^[0-9]{5}$" required>
+                                            <div class="invalid-feedback"  id="feedZipo">
 
-                                        </div>
+                                            </div>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="provincia">Provincia</label>
-                                        <select id="provincia" class="form-control" required>
+                                        <select id="provincia" class="form-control" name="provincia" required>
                                             <option value="" selected>Selecciona...</option>
                                             <option value='alava'>Álava</option>
                                             <option value='albacete'>Albacete</option>
@@ -218,7 +211,7 @@
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-    <script src="js/js.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+    <script src="./js/js.js"></script>
 </body>
 </html>

@@ -1,23 +1,8 @@
 $(document).ready(inicio);
 function inicio()
 {
-    /**
-    * funcion para que solo se vea el login al principio
-    */
-   
-    mostrarSingUp();
-    /**
-    * Carga lo necesario en la cabecera
-    */
-    cabecera();
-    /**
-    * todo lo que tenga que hacer en registro
-    */
     registro();
-    /**
-    *todo lo que tenga que hacer en login
-    */
-    
+    enviar();
 
 }
 function registro()
@@ -30,7 +15,6 @@ function registro()
     comprobarNombre();
     comprobarApel1();
     comprobarApel2();
-    comprobarDNI();
     comprobarCP();
     comprobarTelefonoF();
     comprobarTelefonoM();
@@ -88,58 +72,78 @@ $("#thub2").hide();
 }
 
 /**
-function comprobarCorreoL()
+ * 
+ * @returns {undefined}*
+ * var erTel=/^[0-9]{9}$/;
+                    var erZipo=/^[0-9]{5}$/;
+                    var erDni=/^[0-9]{9}[a-zA-Z]{1}$/;
+var erEmail=/^[a-zA-Z0-9]+.[a-zA-Z0-9]+$/;
+ */
+function enviar()
 {
-     $('#emailoReg').on('submit', function (e) 
-                            {
-                                e.preventDefault(); //parar el submit para que no se envíe el formulario recargando la página.
-                                var datos = $(this).serialize();
-                                //Envía el formulario vía AJAX. Recoge el resultado en la callback.
-                                alert(datos);
-                                $.ajax(
-                                {
-                                        type: 'POST',
-                                        url: 'index.html',
-                                        data: datos,
-                                        
-                                        success: function (data) 
-                                        {
-                                            alert(datos);
-                                          console.log('Llamada OK --> '+data);
-                                          alert('Llamada OK --> '+data);
-                                        }
-                                });
-                            });
-
-			
-
-    
-    
-    $('#emailoLog').on('focusout',
-        function (e)
+    //if(correo correcto)
+    //else
+    //mensaje fallo
+    /** $('#register').on('submit', function () {
+				
+        var datos = $(this).serialize();
+        //Envía el formulario vía AJAX. Recoge el resultado en la callback.
+        $.ajax(
         {
-            e.preventDefault(); //parar el submit para que no se envíe el formulario recargando la página.
-            var datos = $(this).serialize();
-            var email=$('#emailoLog').text(datos)
-            //Envía el formulario vía AJAX. Recoge el resultado en la callback.
-            $.ajax
-            ({
-                type: 'POST',
-                url: 'index.html',
-                data: email,
-                success: function (data)
-                {
-                    console.log('Llamada OK --> '+email);
-                    alert('Llamada OK --> '+email);
-                }
-            });
+            type: 'POST',
+            url: './opsbd/usuarioBD.php',
+            data: datos,
+            success: function (data) 
+            {
+              console.log('Llamada OK --> '+data);
+              alert('Llamada OK --> '+data);
+            }
         });
-    
-    
-
-
+    });*/
+    $('#register').on('submit', function (e) {
+				//validar lo que se quiera aquí:
+				console.log('validado');
+				alert('todo está OK! Ahora se enviará el formulario');
+				return true; //Tras el "return true" se enviará el formulario, recargándose la página.
+				//return false para no continuar y enviar el formulario.
+				
+			});
 }
-*/
+function validar()
+{
+    
+    try
+    {
+        
+        $(':input[type=text]').on
+        (
+            {
+                keyup:function()
+                {
+                    alert('sgew');
+                    
+                    var erText=/[a-zA-Z]+$/;
+                    alert($(this).text());
+                    $(".textu").each(function (){
+                                    alert($(this).text());
+                    });
+                            
+                            if(!erText.test($(this).val()))
+                            {
+                                alert("SGw");
+                                $('.feedtext').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong>Correo no valido.</div>');
+                            }
+                       
+                    
+                }
+            }
+        );
+    }
+    catch(e)
+    {
+        
+    }
+}
 function coorreo()
 {
     var correo = $('[name=emailoReg]');
@@ -190,7 +194,6 @@ function comprobarApolo()
     {
         var apolo =apodo.val();
         var reg = /[a-zA-Z]+$/;
-        var datos=apodo.serialize();
 
         if( !apolo.match(reg) )
         {
@@ -198,17 +201,6 @@ function comprobarApolo()
         }
         else
         {
-            $.ajax
-            ({
-                type: 'POST',
-                url: './opsbd/usuarioBD.php',
-                data: datos,
-                success: function (data)
-                {
-                    console.log('Llamada OK --> '+data);
-                    alert('Llamaa OK --> '+data);
-                }
-            });
             $('#feedAlias').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Apolo colecto.</div>');
         }
 
@@ -218,36 +210,9 @@ function comprobarApolo()
             coincideAple();
         })
 }
-function comprobarDNI()
-{
-    var dni = $('[name=dni]');
-    function coincideDni()
-    {
-        var dni1 =dni.val();
-        var reg = /^[0-9]{9}[a-zA-Z]{1}$/;
 
-        if( !dni1.match(reg) )
-        {
-            $('#feedDni').html('<div class="alert alert-danger" role="alert"> <strong>Warning!</strong> Dni no valido.</div>');
-        }
-        else
-        {
-            $('#feedDni').html('<div class="alert alert-success" role="alert"><strong>SUCCES!</strong> Dni correcto.</div>');
-        }
 
-    }
 
-    dni.keyup(function () {
-            coincideDni();
-        }
-
-    )
-}
-
-function todos()
-{
-    
-}
 function comprobarCP()
 {
     var zip = $('[name=zipo]');

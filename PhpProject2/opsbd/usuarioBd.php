@@ -12,11 +12,13 @@ if(isset($_POST['emailoReg']) &&  !empty($_POST['emailoReg']))
         
     }
 }
-if(isset($_POST['alias']) &&  !empty($_POST['alias']))
+if(isset($_POST['nombre']) &&  !empty($_POST['nombre'])
+        && isset($_POST['emailoReg']) &&  !empty($_POST['emailoReg']))
 {
-    $alias=$_POST['alias'];
-    echo $alias;
-    if(comprobarAlias($alias))
+    $nombre=$_POST['nombre'];
+    $email=$_POST['emailoReg'];
+    $email=$email."@ikasle.egibide.org";
+    if(nuevoUsuario($email,$nombre))
     {
         
     }
@@ -102,16 +104,15 @@ function comprobarAlias($alias) {
 }
 
 //FUNCIÓN PARA REGISTRAR NUEVO USUARIO
-function nuevoUsuario() {
+function nuevoUsuario($email,$nombre) {
     $conexion = conexionBd();
-    
-    
+    echo $nombre;
+    echo $email;
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //DATOS A PASAR: estos dtos se pasaran como argumento o en sesion
-    $email = "mertxe@yahoo.es";
+
     $password = "ccc";
     $alias = "mertxe";
-    $nombre = "Mercedes";
     $apellido1 = "Hernandez";
     $apellido2 = "Hernandez";
     $calle = "El Rio 19 2A";
